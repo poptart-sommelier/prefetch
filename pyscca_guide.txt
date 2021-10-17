@@ -1,0 +1,34 @@
+parsing windows 10 prefetch files:
+the compression algorithm used is xpress-huffman. microsoft has released some source code and implementations,
+which people have adapted to python, via c-bindings.
+
+one package that does this is:
+libscca
+
+installing libscca is not straightforward. here's what i did:
+1) go to this page:
+https://github.com/libyal/libscca/wiki/Building
+
+the author recommends NOT downloading the source code package, but instead downloading the "source distribution package",
+which they link to near the top:
+https://github.com/libyal/libscca/wiki/Building#source-distribution-package
+look for "libscca-[version].tar.gz"
+
+2) extract it to a folder
+
+3) at the bottom of the doc page
+https://github.com/libyal/libscca/wiki/Building
+
+they describe "using setup.py", which can be used to create a build that is just meant for c->python bindings
+
+4) switch to the root of the uncompressed directory, and you'll find setup.py.
+run the commands detailed on that page (good idea to create a venv first)
+
+python -m venv venv
+
+./venv/bin/activate or venv\scripts\activate
+python setup.py build
+python setup.py install
+
+5) you can now import the project
+import pyscca
